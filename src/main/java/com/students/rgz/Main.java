@@ -2,14 +2,12 @@ package com.students.rgz;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class Main extends Application {
     public static Scene current_scene;
@@ -26,7 +24,7 @@ public class Main extends Application {
 
     public void setUp(Stage stage, Scene scene) {
         stage.setResizable(false);
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/ico.png")));
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/ico.png"))));
         stage.setTitle("РГЗ №2");
         stage.setScene(scene);
     }

@@ -18,8 +18,7 @@ public class MainController {
     public static ListView<String> usedButtonList = new ListView<>();
     public static short colorNum = 0;
     private boolean canUseColor = true;
-    private PostController ps = new PostController();
-    private Helper help = new Helper();
+    private final Helper help = new Helper();
     @FXML
     private Button smallButton;
 
@@ -60,12 +59,20 @@ public class MainController {
     public Label text;
 
     @FXML
+    private MenuItem faq;
+
+    @FXML
+    protected void faq() {
+        help.faq((Stage) faq.getParentPopup().getOwnerWindow());
+    }
+
+    @FXML
     protected void closeApplication() {
         System.exit(0);
     }
 
     @FXML
-    protected void restartApplication(ActionEvent event) {help.restartApplication(event, (Stage) restart.getParentPopup().getOwnerWindow());}
+    protected void restartApplication() {help.restartApplication((Stage) restart.getParentPopup().getOwnerWindow());}
 
     // Обробка логіки вибору маленьких клітинок
     @FXML
@@ -126,8 +133,7 @@ public class MainController {
         if (colorNum < 2) {
             colorNum = 0;
             usedButtonList.getItems().clear();
-            Main main = new Main();
-            help.warn((Stage) mediumButton.getScene().getWindow(), main.current_scene);
+            help.warn((Stage) mediumButton.getScene().getWindow());
             return false;
         }
         return true;
@@ -142,8 +148,7 @@ public class MainController {
     private void selectSize(String file, String txt) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(file));
-            Scene scene = new Scene(fxmlLoader.load());
-            Main.current_scene = scene;
+            Main.current_scene = new Scene(fxmlLoader.load());
 
             canUseColor = false;
             smallButton.setVisible(false);

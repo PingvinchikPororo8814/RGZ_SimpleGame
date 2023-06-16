@@ -1,6 +1,5 @@
 package com.students.rgz;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -18,6 +17,7 @@ import javafx.stage.Stage;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 
 public class PostController {
@@ -37,18 +37,21 @@ public class PostController {
     private ImageView img;
 
     @FXML
+    private MenuItem faq;
+
+    @FXML
+    protected void faq() {
+        help.faq((Stage) faq.getParentPopup().getOwnerWindow());
+    }
+
+    @FXML
     protected void closeApplication() {
         System.exit(0);
     }
 
     @FXML
-    protected void restartApplication(ActionEvent event) {
-        help.restartApplication(event, (Stage) restart.getParentPopup().getOwnerWindow());
-    }
-
-    @FXML
-    protected void faq() {
-        colorGridGen();
+    protected void restartApplication() {
+        help.restartApplication((Stage) restart.getParentPopup().getOwnerWindow());
     }
 
     @FXML
@@ -61,15 +64,12 @@ public class PostController {
         }
         if (!nextStep()) {
             button.setVisible(false);
-            String imagePath = getClass().getResource("/images/game_over1.png").toExternalForm();;
-            switch (size) {
-                case 2:
-                    imagePath = getClass().getResource("/images/game_over2.png").toExternalForm();
-                    break;
-                case 3:
-                    imagePath = getClass().getResource("/images/game_over3.png").toExternalForm();
-                    break;
-            }
+            String imagePath;
+            imagePath = switch (size) {
+                case 2 -> Objects.requireNonNull(getClass().getResource("/images/game_over2.png")).toExternalForm();
+                case 3 -> Objects.requireNonNull(getClass().getResource("/images/game_over3.png")).toExternalForm();
+                default -> Objects.requireNonNull(getClass().getResource("/images/game_over1.png")).toExternalForm();
+            };
             Image image = new Image(imagePath);
             img.setImage(image);
             img.setVisible(true);
@@ -116,8 +116,7 @@ public class PostController {
         int i = 0, j = 0;
         // Отримання масива чисел з поля
         for (Node node : colorGrid.getChildren()) {
-            if (node instanceof StackPane) {
-                StackPane stackPane = (StackPane) node;
+            if (node instanceof StackPane stackPane) {
 
                 // Отримання Label із StackPane
                 Label label = null;

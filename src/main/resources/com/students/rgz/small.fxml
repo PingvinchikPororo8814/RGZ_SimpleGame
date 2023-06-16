@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="280.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.students.rgz.PostController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="275.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.students.rgz.PostController">
     <children>
-        <MenuBar prefWidth="254.0" VBox.vgrow="NEVER">
+        <MenuBar prefWidth="250.0" VBox.vgrow="NEVER">
             <menus>
                 <Menu mnemonicParsing="false" text="Налаштування">
                     <items>
@@ -25,7 +25,7 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Допомога">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#faq" text="Як користуватись" />
+                        <MenuItem fx:id="faq" mnemonicParsing="false" onAction="#faq" text="Як користуватись" />
                     </items>
                 </Menu>
             </menus>
@@ -42,10 +42,10 @@
                   <Font name="Comic Sans MS Bold" size="12.0" />
                </font>
             </Button>
-            <ImageView fx:id="img" fitHeight="51.0" fitWidth="200.0" layoutX="1.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" visible="false"/>
+            <ImageView fx:id="img" fitHeight="50.0" fitWidth="200.0" layoutX="1.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" visible="false" />
          </children>
       </AnchorPane>
-      <GridPane fx:id="colorGrid" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" translateY="-4.0">
+      <GridPane fx:id="colorGrid" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

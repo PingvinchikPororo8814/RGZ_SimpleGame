@@ -22,7 +22,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Допомога">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Як користуватись" />
+                   <MenuItem fx:id="faq" mnemonicParsing="false" onAction="#faq" text="Як користуватись" />
                </items>
             </Menu>
          </menus>
